@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>免费领取虾青素产品 - 健康咨询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .title {
+            color: #333;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa36c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #ff6b6b;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .benefits {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .benefit-item {
+            margin: 10px 0;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .benefit-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #07c160;
+            font-weight: bold;
+        }
+        
+        .offer {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .offer-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .offer-desc {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .pulse-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(45deg, #07c160, #09d668);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 25px 0;
+            box-shadow: 0 10px 20px rgba(7, 193, 96, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .pulse-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(7, 193, 96, 0.4);
+        }
+        
+        .pulse-button:active {
+            transform: translateY(0);
+        }
+        
+        .pulse-button:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .pulse-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(50, 50);
+                opacity: 0;
+            }
+        }
+        
+        .steps {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: #07c160;
+            font-size: 16px;
+        }
+        
+        .footer {
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        
+        .wechat-qr {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .wechat-qr.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .wechat-qr img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .wechat-id {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background: #07c160;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(7, 193, 96, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(7, 193, 96, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(7, 193, 96, 0);
+            }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部图片 -->
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="虾青素产品" 
+             class="banner-img">
+        
+        <div class="content">
+            <h1 class="title">懒人抗衰+内调外养，状态回春不足梦！</h1>
+            
+            <div class="benefits">
+                <div class="benefit-item">抗氧化抗衰老，延缓肌肤老化</div>
+                <div class="benefit-item">超糖降脂，保护心血管健康</div>
+                <div class="benefit-item">增强免疫力，改善亚健康状态</div>
+                <div class="benefit-item">改善肌肤暗沉，提亮肤色</div>
+                <div class="benefit-item">补水保湿，淡纹紧致</div>
+                <div class="benefit-item">改善眼睛疲劳，缓解干涩模糊</div>
+            </div>
+            
+            <div class="offer">
+                <div class="offer-title">🎁 免费领取虾青素产品</div>
+                <div class="offer-desc">还有健康营养师一对一专业咨询</div>
+            </div>
+            
+            <div class="steps">
+                <div class="step">点击下方按钮添加微信</div>
+                <div class="step">发送【虾青素】领取产品</div>
+                <div class="step">获得专业健康指导</div>
+            </div>
+            
+            <!-- 闪动添加按钮 -->
+            <button class="pulse-button pulse-animation" id="addWechatBtn">
+                📱 点击添加微信立即领取好礼
+            </button>
+            
+            <!-- 添加引导区域 -->
+            <div class="wechat-qr" id="wechatQr">
+                <p style="margin-bottom: 15px; color: #333; font-weight: bold;">添加方式</p>
+                <div class="wechat-id">
+                    <span id="wechatId">healthcare888</span>
+                    <button class="copy-btn" onclick="copyWechatId()">复制微信号</button>
+                </div>
+                <p style="margin: 15px 0; color: #666; font-size: 14px;">或长按保存二维码到相册</p>
+                <img src="https://via.placeholder.com/200x200/07c160/ffffff?text=微信二维码" 
+                     alt="微信二维码">
+                <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                    打开微信 → 扫一扫 → 选择相册 → 扫描二维码
+                </p>
+            </div>
+            
+            <div class="footer">
+                <p>添加微信时请备注：虾青素领取</p>
+                <p>本活动最终解释权归品牌方所有</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 引导弹窗 -->
+    <div class="modal" id="guideModal">
+        <button class="close-modal" onclick="closeModal()">×</button>
+        <div class="modal-content">
+            <h3 style="margin-bottom: 15px;">如何添加微信？</h3>
+            <div class="step" style="text-align: left;">1. 复制微信号 health888</div>
+            <div class="step" style="text-align: left;">2. 打开微信点击右上角【+】</div>
+            <div class="step" style="text-align: left;">3. 选择【添加朋友】粘贴微信号</div>
+            <div class="step" style="text-align: left;">4. 发送验证信息：虾青素领取</div>
+            <button class="pulse-button" style="margin-top: 20px;" onclick="closeModal()">
+                明白了，去添加
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addWechatBtn').addEventListener('click', function() {
+            // 显示添加引导
+            const wechatQr = document.getElementById('wechatQr');
+            wechatQr.classList.toggle('show');
+            
+            // 如果二维码区域显示，滚动到该区域
+            if (wechatQr.classList.contains('show')) {
+                wechatQr.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // 复制微信号到剪贴板
+            copyWechatId();
+            
+            // 显示引导弹窗
+            document.getElementById('guideModal').style.display = 'flex';
+        });
+        
+        function copyWechatId() {
+            const wechatId = document.getElementById('wechatId').textContent;
+            navigator.clipboard.writeText(wechatId).then(() => {
+                // 显示复制成功提示
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '已复制！';
+                btn.style.background = '#4CAF50';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#07c160';
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                // 备用方案：使用输入框复制
+                const input = document.createElement('input');
+                input.value = wechatId;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+            });
+        }
+        
+        function closeModal() {
+            document.getElementById('guideModal').style.display = 'none';
+        }
+        
+        // 页面加载后自动滚动到顶部
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
